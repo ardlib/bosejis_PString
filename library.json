@@ -1,0 +1,33 @@
+{
+  "name": "bosejis_PString",
+  "version": "0.0.0",
+  "description": "Print to String Library",
+  "keywords": "Print, String, rest, http, web",
+  "authors": [
+    {
+      "name": "Mikal Hart",
+      "email": "mikal@arduiniana.org",
+      "url": "http://arduiniana.org/libraries/pstring/"
+    },
+    {
+      "name": "Abhijit Bose (aka. Boseji)",
+      "url": "https://github.com/boseji",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ardlib/bosejis_PString.git"
+  },
+  "homepage": "https://boseji.com",
+  "export": {
+    "exclude": [
+      "extras",
+      "docs"
+    ]
+  },
+  "dependencies": {},
+  "frameworks": "*",
+  "platforms": "*",
+  "examples": "examples/*/*/*.ino"
+}

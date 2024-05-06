@@ -1,0 +1,23 @@
+# Boseji's PString Library
+
+# Primary Header and Classes (KEYWORD1)
+bosejis_PString	KEYWORD1
+bosejis_PString.h	KEYWORD1
+PString	KEYWORD1
+
+# Instances, Methods and Functions (KEYWORD2)
+begin	KEYWORD2
+capacity	KEYWORD2
+length	KEYWORD2
+format	KEYWORD2
+Hex	KEYWORD2
+HexBuffer	KEYWORD2
+HexArray	KEYWORD2
+
+# Structures, Pre-Processor and Other Functions (KEYWORD3)
+
+# Constants (LITERAL1)
+
+# Other Parts (LITERAL2)
+PSTRING_LIBRARY_VERSION	LITERAL2
+
