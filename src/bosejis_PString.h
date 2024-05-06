@@ -123,10 +123,13 @@ public:
   int Hex(int32_t data);
   int Hex(uint64_t data);
   int Hex(int64_t data);
-  // int Hex(size_t data);
   int Hex(bool data);
   int Hex(float data);
   int Hex(double data);
+  template <class T> inline int Hex(T *arg) {
+    // Print the Memory Address
+    return Hex((uint64_t)arg);
+  }
 
   // Print a Hex Buffer to the String
   template <class T> inline int HexBuffer(T *arg, size_t size) {

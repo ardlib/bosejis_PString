@@ -67,9 +67,11 @@ int PString::format(char *str, ...) {
   va_list argptr;
   va_start(argptr, str);
   int ret = vsnprintf(_cur, _size - (_cur - _buf), str, argptr);
-  if (_size)
-    while (*_cur)
+  if (ret) {
+    while (*_cur != '\0') {
       ++_cur;
+    }
+  }
   return ret;
 }
 
@@ -84,27 +86,39 @@ int PString::Hex(uint8_t data) {
 int PString::Hex(char data) { return Hex((uint8_t)data); }
 
 int PString::Hex(uint16_t data) {
-  int ret;
-  ret = Hex((uint8_t)((data >> 8) & 0xFFU));
-  ret += Hex((uint8_t)((data >> 0) & 0xFFU));
+#define ARRAY_SIZE (sizeof(uint16_t))
+  uint8_t byteArray[ARRAY_SIZE];
+  memcpy(byteArray, &data, ARRAY_SIZE);
+  int ret = 0;
+  for (int i = ARRAY_SIZE - 1; i > -1; i--) {
+    ret += Hex(byteArray[i]);
+  }
   return ret;
 }
 
 int PString::Hex(int16_t data) { return Hex((uint16_t)data); }
 
 int PString::Hex(uint32_t data) {
-  int ret;
-  ret = Hex((uint16_t)((data >> 16) & 0xFFFFU));
-  ret += Hex((uint16_t)((data >> 0) & 0xFFFFU));
+#define ARRAY_SIZE (sizeof(uint32_t))
+  uint8_t byteArray[ARRAY_SIZE];
+  memcpy(byteArray, &data, ARRAY_SIZE);
+  int ret = 0;
+  for (int i = ARRAY_SIZE - 1; i > -1; i--) {
+    ret += Hex(byteArray[i]);
+  }
   return ret;
 }
 
 int PString::Hex(int32_t data) { return Hex((uint32_t)data); }
 
 int PString::Hex(uint64_t data) {
-  int ret;
-  ret = Hex((uint32_t)((data >> 32) & 0xFFFFU));
-  ret += Hex((uint32_t)((data >> 0) & 0xFFFFU));
+#define ARRAY_SIZE (sizeof(uint64_t))
+  uint8_t byteArray[ARRAY_SIZE];
+  memcpy(byteArray, &data, ARRAY_SIZE);
+  int ret = 0;
+  for (int i = ARRAY_SIZE - 1; i > -1; i--) {
+    ret += Hex(byteArray[i]);
+  }
   return ret;
 }
 
@@ -114,6 +128,24 @@ int PString::Hex(int64_t data) { return Hex((uint64_t)data); }
 
 int PString::Hex(bool data) { return Hex((uint8_t)data); }
 
-int PString::Hex(float data) { return Hex((uint32_t)data); }
+int PString::Hex(float data) {
+#define ARRAY_SIZE (sizeof(float))
+  uint8_t byteArray[ARRAY_SIZE];
+  memcpy(byteArray, &data, ARRAY_SIZE);
+  int ret = 0;
+  for (int i = ARRAY_SIZE - 1; i > -1; i--) {
+    ret += Hex(byteArray[i]);
+  }
+  return ret;
+}
 
-int PString::Hex(double data) { return Hex((uint64_t)data); }
+int PString::Hex(double data) {
+#define ARRAY_SIZE (sizeof(double))
+  uint8_t byteArray[ARRAY_SIZE];
+  memcpy(byteArray, &data, ARRAY_SIZE);
+  int ret = 0;
+  for (int i = ARRAY_SIZE - 1; i > -1; i--) {
+    ret += Hex(byteArray[i]);
+  }
+  return ret;
+}

@@ -47,6 +47,8 @@
 
 // Functions
 void Test_Basic();
+void Test_Format();
+void Test_Hex();
 
 void setup() {
   Serial.begin(115200);
@@ -57,6 +59,10 @@ void setup() {
 
 void loop() {
   Test_Basic();
+  delay(5000);
+  Test_Format();
+  delay(5000);
+  Test_Hex();
   delay(5000);
 }
 
@@ -127,13 +133,13 @@ void Test_Basic() {
 
   // PStrings support the concatenation operator
   str += " Shivay!";
-  Serial.println(F("Assignment to PString: "));
+  Serial.println(F("Assignment to PString and Concatenation: "));
   Serial.println(str);
   Serial.println();
 
   // And you can also check for equivalence
   if (str == "Aum Namh Shivay!") {
-    Serial.println(F("This value is correct!"));
+    Serial.println(F("This value is indeed correct and equivalent!"));
   }
   Serial.println();
 
@@ -147,5 +153,97 @@ void Test_Basic() {
   Serial.println(buffer);
   Serial.println();
   Serial.println(F("No more buffer overflows!"));
+  Serial.println();
+}
+
+void Test_Format() {
+#define TEST_FORMAT_BUF 100
+#define PI 3.1415927
+#define SECS 86400U
+  char buffer[TEST_FORMAT_BUF];
+  SEPARATOR();
+  Serial.println(F("Formatting Examples."));
+  Serial.println();
+
+  // Here is how what sprintf looks like for PString
+  PString str(buffer, sizeof(buffer));
+  str.format("Formatted Floating point looks like: %04.7f", PI);
+  Serial.println(buffer);
+  Serial.println(F("This might not get printed in some Architectures."));
+  Serial.println();
+  str.begin();
+  str.print(F("A Batter way to print floating points: "));
+  str.print(PI, 7);
+  Serial.println(buffer);
+  Serial.println();
+
+  // Other Things do work here
+  str.begin();
+  str.format("Printing %08lu Integers work but %08X Hex does not.",
+             (uint64_t)25693921, (uint64_t)0x3242569CDU);
+  Serial.println(buffer);
+  Serial.println();
+
+  str.begin();
+  str.format("Printing String '%s' works fine too.", "Ram Ram");
+  Serial.println(buffer);
+  Serial.println();
+}
+
+void Test_Hex() {
+#define TEST_HEX_BUF 100
+#define PI 3.1415927
+#define SECS 86400U
+  char buffer[TEST_HEX_BUF];
+  uint32_t u32test = 20;
+  char *buf = "Hari Aum";
+  SEPARATOR();
+  Serial.println(F("Hex Printing Examples."));
+  Serial.println();
+
+  PString str(buffer, sizeof(buffer));
+  // We can Easily Print characters and their Hex:
+  str.print(F("Tab Character '\\t' is 0x"));
+  str.Hex('\t');
+  Serial.println(str.c_str());
+  Serial.println();
+
+  str.begin();
+  str.print(F("Boolean Value of 'True' is 0x"));
+  str.Hex(true);
+  Serial.println(str);
+  Serial.println();
+
+  str.begin();
+  str.print(F("uint64_t Value of '1311768467294899695' is 0x"));
+  str.Hex((uint64_t)0x1234567890123456);
+  Serial.println(str);
+  Serial.println();
+
+  str.begin();
+  str.print(F("Floating Point Value of PI is "));
+  str.print(PI, 7);
+  str.print(F(" And in Hex 0x"));
+  str.Hex(PI);
+  Serial.println(str);
+  Serial.println();
+
+  str.begin();
+  str.print(F("We can also print Address of Variables : 0x"));
+  str.Hex(&u32test);
+  Serial.println(str);
+  Serial.println();
+
+  str.begin();
+  str.format("We can print Buffers '%s' : 0x", buf);
+  str.HexBuffer(buf, strlen(buf));
+  Serial.println(str);
+  Serial.println();
+
+  str.begin();
+  str.format("Or in Array Form '%s' : {", buf);
+  str.HexArray(buf, strlen(buf));
+  str.print(F(" }"));
+  Serial.println(str);
   Serial.println();
 }
