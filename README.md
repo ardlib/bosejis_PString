@@ -140,7 +140,7 @@ usually adds only `100-600 bytes` to a *program’s size*.
 - V3.0.2 - Adding CI/CD build verification by boseji
 - Library Taken down in early Q1'2021.
 - Revival under different name, License and context.
-- Refer to [Releases](https://github.com/ardlib/bosejis_PString/release/latest) to understand.
+- Refer to [Releases](https://github.com/ardlib/bosejis_PString/releases/latest) to understand.
 - Cleanup Command `clang-format -i src/*.h src/*.cpp examples/basic_use/basic_use.ino`
 
 ## Contributing
