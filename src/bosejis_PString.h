@@ -133,12 +133,9 @@ public:
 
   // Print a Hex Buffer to the String
   template <class T> inline int HexBuffer(T *arg, size_t size) {
-    int ret = 0, r;
+    int ret = 0;
     for (size_t i = 0; i < size; i++) {
-      r = Hex(arg[i]);
-      if (r == 0)
-        return r;
-      ret += r;
+      ret += Hex(arg[i]);
     }
     return ret;
   }
@@ -147,19 +144,10 @@ public:
   template <class T> inline int HexArray(T *arg, size_t size) {
     int ret = 0, r;
     for (size_t i = 0; i < size; i++) {
-      r = print(F(" 0x"));
-      if (r == 0)
-        return r;
-      ret += r;
-      r = Hex(arg[i]);
-      if (r == 0)
-        return r;
-      ret += r;
+      ret += print(F(" 0x"));
+      ret += Hex(arg[i]);
       if (i < (size - 1)) {
-        r = print(',');
-        if (r == 0)
-          return r;
-        ret += r;
+        ret += print(',');
       }
     }
     return ret;
