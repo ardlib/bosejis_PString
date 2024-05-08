@@ -77,9 +77,13 @@ int PString::format(char *str, ...) {
 
 int PString::Hex(uint8_t data) {
   static const char map[] = {"0123456789abcdef"};
-  int ret;
-  ret = print(map[(uint8_t)((data & 0xF0) >> 4)]);
-  ret += print(map[(uint8_t)(data & 0x0F)]);
+  int ret = 0, r;
+  r = print(map[(uint8_t)((data & 0xF0) >> 4)]);
+  if (r == 0) return r;
+  ret = r;
+  r = print(map[(uint8_t)(data & 0x0F)]);
+  if (r == 0) return r;
+  ret += r;
   return ret;
 }
 
@@ -89,9 +93,11 @@ int PString::Hex(uint16_t data) {
 #define ARRAY_SIZE (sizeof(uint16_t))
   uint8_t byteArray[ARRAY_SIZE];
   memcpy(byteArray, &data, ARRAY_SIZE);
-  int ret = 0;
+  int ret = 0, r;
   for (int i = ARRAY_SIZE - 1; i > -1; i--) {
-    ret += Hex(byteArray[i]);
+    r = Hex(byteArray[i]);
+    if (r == 0) return r;
+    ret += r;
   }
   return ret;
 }
@@ -102,9 +108,11 @@ int PString::Hex(uint32_t data) {
 #define ARRAY_SIZE (sizeof(uint32_t))
   uint8_t byteArray[ARRAY_SIZE];
   memcpy(byteArray, &data, ARRAY_SIZE);
-  int ret = 0;
+  int ret = 0, r;
   for (int i = ARRAY_SIZE - 1; i > -1; i--) {
-    ret += Hex(byteArray[i]);
+    r = Hex(byteArray[i]);
+    if (r == 0) return r;
+    ret += r;
   }
   return ret;
 }
@@ -115,9 +123,11 @@ int PString::Hex(uint64_t data) {
 #define ARRAY_SIZE (sizeof(uint64_t))
   uint8_t byteArray[ARRAY_SIZE];
   memcpy(byteArray, &data, ARRAY_SIZE);
-  int ret = 0;
+  int ret = 0, r;
   for (int i = ARRAY_SIZE - 1; i > -1; i--) {
-    ret += Hex(byteArray[i]);
+    r = Hex(byteArray[i]);
+    if (r == 0) return r;
+    ret += r;
   }
   return ret;
 }
@@ -132,9 +142,11 @@ int PString::Hex(float data) {
 #define ARRAY_SIZE (sizeof(float))
   uint8_t byteArray[ARRAY_SIZE];
   memcpy(byteArray, &data, ARRAY_SIZE);
-  int ret = 0;
+  int ret = 0, r;
   for (int i = ARRAY_SIZE - 1; i > -1; i--) {
-    ret += Hex(byteArray[i]);
+    r = Hex(byteArray[i]);
+    if (r == 0) return r;
+    ret += r;
   }
   return ret;
 }
@@ -143,9 +155,11 @@ int PString::Hex(double data) {
 #define ARRAY_SIZE (sizeof(double))
   uint8_t byteArray[ARRAY_SIZE];
   memcpy(byteArray, &data, ARRAY_SIZE);
-  int ret = 0;
+  int ret = 0, r;
   for (int i = ARRAY_SIZE - 1; i > -1; i--) {
-    ret += Hex(byteArray[i]);
+    r = Hex(byteArray[i]);
+    if (r == 0) return r;
+    ret += r;
   }
   return ret;
 }

@@ -133,21 +133,33 @@ public:
 
   // Print a Hex Buffer to the String
   template <class T> inline int HexBuffer(T *arg, size_t size) {
-    int ret = 0;
+    int ret = 0, r;
     for (size_t i = 0; i < size; i++) {
-      ret += Hex(arg[i]);
+      r = Hex(arg[i]);
+      if (r == 0)
+        return r;
+      ret += r;
     }
     return ret;
   }
 
   // Print a Hex Buffer like C Array to the String
   template <class T> inline int HexArray(T *arg, size_t size) {
-    int ret = 0;
+    int ret = 0, r;
     for (size_t i = 0; i < size; i++) {
-      ret += print(F(" 0x"));
-      ret += Hex(arg[i]);
+      r = print(F(" 0x"));
+      if (r == 0)
+        return r;
+      ret += r;
+      r = Hex(arg[i]);
+      if (r == 0)
+        return r;
+      ret += r;
       if (i < (size - 1)) {
-        ret += print(',');
+        r = print(',');
+        if (r == 0)
+          return r;
+        ret += r;
       }
     }
     return ret;
