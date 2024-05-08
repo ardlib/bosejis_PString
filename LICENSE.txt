@@ -654,8 +654,8 @@ Also add information on how to contact you by electronic and paper mail.
 notice like this when it starts in an interactive mode:
 
     bosejis_PString - Print to String Library
-    Copyright (C) 2020-2024 by Abhijit Bose (aka. Boseji)
     Copyright (C) 2009-2012 Mikal Hart.
+    Copyright (C) 2020-2024 by Abhijit Bose (aka. Boseji)
     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
     This is free software, and you are welcome to redistribute it
     under certain conditions; type `show c' for details.
