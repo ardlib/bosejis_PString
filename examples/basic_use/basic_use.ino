@@ -164,13 +164,13 @@ void Test_Format() {
 
   // Here is how what sprintf looks like for PString
   PString str(buffer, sizeof(buffer));
-  str.format("Formatted Floating point looks like: %04.7f", TEST_FORMAT_PI);
+  str.format("Formatted Floating point looks like: %04.7f", PI);
   Serial.println(buffer);
   Serial.println(F("This might not get printed in some Architectures."));
   Serial.println();
   str.begin();
   str.print(F("A Batter way to print floating points: "));
-  str.print(TEST_FORMAT_PI, 7);
+  str.print(PI, 7);
   Serial.println(buffer);
   Serial.println();
 
@@ -217,9 +217,9 @@ void Test_Hex() {
 
   str.begin();
   str.print(F("Floating Point Value of PI is "));
-  str.print(TEST_HEX_PI, 7);
+  str.print(PI, 7);
   str.print(F(" And in Hex 0x"));
-  str.Hex(TEST_HEX_PI);
+  str.Hex(PI);
   Serial.println(str);
   Serial.println();
 
