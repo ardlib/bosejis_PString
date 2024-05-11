@@ -79,10 +79,10 @@ public:
   }
 
   // returns the length of the current string, not counting the 0 terminator
-  inline const size_t length() { return _cur - _buf; }
+  inline size_t length() { return _cur - _buf; }
 
   // returns the capacity of the string
-  inline const size_t capacity() { return _size; }
+  inline size_t capacity() { return _size; }
 
   // gives access to the internal string
   inline operator const char *() { return _buf; }
@@ -111,7 +111,7 @@ public:
 
   // Safe access to sprintf-like formatting,
   // e.g. str.format("Hi, my name is %s and I'm %d years old", name, age);
-  int format(char *str, ...);
+  int format(const char *str, ...);
 
   // Print Hex value to the String
 

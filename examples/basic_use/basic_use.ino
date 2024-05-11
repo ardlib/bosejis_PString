@@ -158,8 +158,7 @@ void Test_Basic() {
 
 void Test_Format() {
 #define TEST_FORMAT_BUF 100
-#define PI 3.1415927
-#define SECS 86400U
+#define TEST_FORMAT_PI 3.1415927
   char buffer[TEST_FORMAT_BUF];
   SEPARATOR();
   Serial.println(F("Formatting Examples."));
@@ -167,13 +166,13 @@ void Test_Format() {
 
   // Here is how what sprintf looks like for PString
   PString str(buffer, sizeof(buffer));
-  str.format("Formatted Floating point looks like: %04.7f", PI);
+  str.format("Formatted Floating point looks like: %04.7f", TEST_FORMAT_PI);
   Serial.println(buffer);
   Serial.println(F("This might not get printed in some Architectures."));
   Serial.println();
   str.begin();
   str.print(F("A Batter way to print floating points: "));
-  str.print(PI, 7);
+  str.print(TEST_FORMAT_PI, 7);
   Serial.println(buffer);
   Serial.println();
 
@@ -192,7 +191,7 @@ void Test_Format() {
 
 void Test_Hex() {
 #define TEST_HEX_BUF 100
-#define PI 3.1415927
+#define TEST_HEX_PI 3.1415927
 #define SECS 86400U
   char buffer[TEST_HEX_BUF];
   uint32_t u32test = 20;
@@ -222,9 +221,9 @@ void Test_Hex() {
 
   str.begin();
   str.print(F("Floating Point Value of PI is "));
-  str.print(PI, 7);
+  str.print(TEST_HEX_PI, 7);
   str.print(F(" And in Hex 0x"));
-  str.Hex(PI);
+  str.Hex(TEST_HEX_PI);
   Serial.println(str);
   Serial.println();
 
