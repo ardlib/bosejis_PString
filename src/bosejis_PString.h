@@ -142,7 +142,7 @@ public:
 
   // Print a Hex Buffer like C Array to the String
   template <class T> inline int HexArray(T *arg, size_t size) {
-    int ret = 0, r;
+    int ret = 0;
     for (size_t i = 0; i < size; i++) {
       ret += print(F(" 0x"));
       ret += Hex(arg[i]);
