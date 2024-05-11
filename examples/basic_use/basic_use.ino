@@ -75,7 +75,7 @@ void Test_Basic() {
   Serial.println();
   // There are two main ways to use a PString.
   // First, the "quickie" way, simply renders a single value into a buffer
-  PString(buffer, sizeof(buffer), PI); // print the value of PI into the buffer
+  PString(buffer, sizeof(buffer), PI, 7); // print the value of PI into the buffer
   Serial.print(F("Printing a Floating Point: "));
   Serial.println(buffer); // do whatever you want with "buffer" here.
   Serial.println();
@@ -101,7 +101,7 @@ void Test_Basic() {
   // on it exactly as you would with Serial or LiquidCrystal
   PString str(buffer, sizeof(buffer));
   str.print("The value of PI is ");
-  str.print(PI);
+  str.print(PI, 7);
 
   // At this point, buffer contains "The value of PI is 3.14.."
   // You can get to the data directly...
