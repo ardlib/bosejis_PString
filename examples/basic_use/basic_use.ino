@@ -68,7 +68,6 @@ void loop() {
 
 void Test_Basic() {
 #define TEST_BASIC_BUF 50
-#define PI 3.1415927
 #define SECS 86400
   char buffer[TEST_BASIC_BUF];
   SEPARATOR();
@@ -158,7 +157,6 @@ void Test_Basic() {
 
 void Test_Format() {
 #define TEST_FORMAT_BUF 100
-#define TEST_FORMAT_PI 3.1415927
   char buffer[TEST_FORMAT_BUF];
   SEPARATOR();
   Serial.println(F("Formatting Examples."));
@@ -191,11 +189,9 @@ void Test_Format() {
 
 void Test_Hex() {
 #define TEST_HEX_BUF 100
-#define TEST_HEX_PI 3.1415927
-#define SECS 86400U
   char buffer[TEST_HEX_BUF];
   uint32_t u32test = 20;
-  char *buf = "Hari Aum";
+  const char *buf = "Hari Aum";
   SEPARATOR();
   Serial.println(F("Hex Printing Examples."));
   Serial.println();
