@@ -134,6 +134,9 @@ public:
   // Print a Hex Buffer to the String
   template <class T> inline int HexBuffer(T *arg, size_t size) {
     int ret = 0;
+    if (size == 0) {
+      return print(F("Empty!"));
+    }
     for (size_t i = 0; i < size; i++) {
       ret += Hex(arg[i]);
     }
